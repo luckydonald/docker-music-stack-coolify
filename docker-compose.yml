@@ -2,53 +2,30 @@ version: '2'
 
 services:
   icecast:
-    image: vitiman/alpine-icecast:latest
-    ports:
-      - "8000:8000"
-    networks:
-      - music_stack
+    build: icecast
+    environment:
+        SERVICE_FQDN_STREAM_8000:
 
   # Add your host volumen in path/to/... or add your own volume below
   mpd:
-    image: vitiman/alpine-mpd:latest
-    ports:
-      - "6600:6600"
+    build: mpd
     depends_on:
       - icecast
-    networks:
-      - music_stack
+    environment:
+        SERVICE_FQDN_STREAM_6600: /mpd
     volumes:
-      - /path/to/mpd_music:/var/lib/mpd/music
-      - /path/to/mpd_playlists:/var/lib/mpd/playlists
-      - /path/to/mpd_database:/var/lib/mpd/database
+      - ./mpd_music:/var/lib/mpd/music
+      - ./mpd_playlists:/var/lib/mpd/playlists
+      - ./mpd_database:/var/lib/mpd/database
 
   sima:
-    image: vitiman/alpine-sima:latest
+    build: sima
     depends_on:
       - mpd
-    networks:
-      - music_stack
 
   ympd:
-    image: vitiman/alpine-ympd:latest
-    ports:
-      - "8080:8080"
+    build: ympd
     depends_on:
       - mpd
-    networks:
-      - music_stack
-
-networks:
-  music_stack:
-    driver: bridge
-
-# If you use your own volumes instead host volumes, uncomment this section
-# volumes:
-#   mpd_music:
-#     external: true
-#   mpd_playlists:
-#     external: true
-#   mpd_database:
-#     external: true
-
-
+    environment:
+        SERVICE_FQDN_STREAM_8080: /ymdp
