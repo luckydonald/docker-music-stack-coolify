@@ -6,6 +6,7 @@ services:
     environment:
         SERVICE_FQDN_STREAM_8000:
 
+
   # Add your host volumen in path/to/... or add your own volume below
   mpd:
     build: mpd

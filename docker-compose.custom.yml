@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  icecast:
+    ports:
+      - "8000:8000"
+    environment:
+      INTERNAL_STREAM_PASSWORD: ${INTERNAL_STREAM_PASSWORD:-hackme}
+      ADMIN_LOGIN_USER: ${ADMIN_LOGIN_USER:-admin}
+      ADMIN_LOGIN_PASSWORD: ${ADMIN_LOGIN_PASSWORD:-hackme2}
+
+  mpd:
+    ports:
+      - "6600:6600"
+    environment:
+      INTERNAL_STREAM_PASSWORD: ${INTERNAL_STREAM_PASSWORD:-hackme}
+
+  sima:
+
+  ympd:
+    ports:
+      - "8080:8080"

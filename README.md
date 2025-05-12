@@ -17,7 +17,7 @@ The other apps are cool add-ons for a beautiful stack
 ## Run
 #### Local
 ```shell
-docker compose -f docker-compose.yml -f docker-compose.yml.custom up --build --detach && docker compose logs -f --tail 100
+docker compose -f docker-compose.yml -f docker-compose.custom.yml up --build --detach && docker compose logs -f --tail 100
 ```
 
 #### Coolify
