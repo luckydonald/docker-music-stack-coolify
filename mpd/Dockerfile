@@ -1,16 +1,13 @@
 FROM alpine:latest
 MAINTAINER luckydonald
 
-ENV MPD_VERSION 0.24.3-r0
-ENV MPC_VERSION 0.35-r0
-
 # https://docs.docker.com/engine/reference/builder/#arg
 ARG user=mpd
 ARG group=audio
 
 RUN apk -q update \
-    && apk -q --no-progress add mpd="$MPD_VERSION" \
-    && apk -q --no-progress add mpc="$MPC_VERSION" \
+    && apk -q --no-progress add mpd \
+    && apk -q --no-progress add mpc \
     && rm -rf /var/cache/apk/*
 
 RUN mkdir -p /var/lib/mpd/music \

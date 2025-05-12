@@ -1,8 +1,6 @@
 FROM alpine:latest
 MAINTAINER luckydonald
 
-ENV ICECAST_VERSION 2.4.4-r13
-
 # https://docs.docker.com/engine/reference/builder/#arg
 # docker run -p 8000:8000 --net music_stack --name=icecast -d alpine-icecast:dev
 ARG user=icecast
@@ -11,7 +9,7 @@ ARG group=icecast
 # ARG gid=1000
 
 RUN apk -q update \
-    && apk -q --no-progress add icecast="$ICECAST_VERSION" \
+    && apk -q --no-progress add icecast \
     && rm -rf /var/cache/apk/*
 
 COPY silence.ogg /usr/share/icecast/silence.ogg

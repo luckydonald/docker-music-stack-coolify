@@ -2,10 +2,9 @@ FROM alpine:latest
 MAINTAINER luckydonald
 
 ENV SIMA_VERSION 0.18.2
-ENV PYTHON_VERSION 3.12.10-r0
 
 RUN apk -q update \
-    && apk -q --no-progress add python3="$PYTHON_VERSION" \
+    && apk -q --no-progress add python3 \
     && apk -q --no-progress add curl
 
 RUN curl -fsSl http://media.kaliko.me/src/sima/releases/MPD_sima-$SIMA_VERSION.tar.xz -o sima.tar.xz \
