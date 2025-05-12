@@ -14,6 +14,15 @@ music server application
 MPD + Icecast would be the essential configuration to be prepared to listen music.
 The other apps are cool add-ons for a beautiful stack
 
+## Run
+#### Local
+```shell
+docker compose -f docker-compose.yml -f docker-compose.yml.custom up --build --detach && docker compose logs -f --tail 100
+```
+
+#### Coolify
+Add this repo as a project to coolify.
+
 ## Execution
 
 You have two options to execute all the stack, using [docker-compose](https://docs.docker.com/compose/) or

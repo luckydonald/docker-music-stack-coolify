@@ -1,8 +1,8 @@
-FROM alpine:3.3
-MAINTAINER @VITIMan https://github.com/VITIMan 
+FROM alpine:latest
+MAINTAINER luckydonald
 
-ENV SIMA_VERSION 0.14.1
-ENV PYTHON_VERSION 3.5.1-r0
+ENV SIMA_VERSION 0.18.2
+ENV PYTHON_VERSION 3.12.10-r0
 
 RUN apk -q update \
     && apk -q --no-progress add python3="$PYTHON_VERSION" \
